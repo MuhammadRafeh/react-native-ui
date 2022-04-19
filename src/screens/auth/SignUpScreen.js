@@ -10,7 +10,7 @@ import TextInput from '../../components/UI/TextInput';
 const SignUpScreen = props => {
     return (
         <>
-            <LinearGradient colors={[theme.primary, '#202288', theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={styles.linearGradient} />
+            <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={styles.linearGradient} />
             <View style={{ top: '9.3%', left: '19.7%', position: 'absolute' }}>
                 <BigSun width={51} height={51} fill={"black"} />
             </View>
