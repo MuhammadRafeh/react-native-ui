@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import BigSun from '../../assets/images/signup/bigSun.svg';
 import RunSun from '../../assets/images/signup/runSun.svg';
 import Sun from '../../assets/images/signup/sun.svg';
@@ -8,11 +8,53 @@ import theme from '../../constants/theme';
 import TextInput from '../../components/UI/TextInput';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import Button from '../../components/UI/Button';
+import Circle from '../../components/UI/Circle';
 
 const SignUpScreen = props => {
     return (
         <>
             <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={styles.linearGradient} />
+
+            <Circle left={'10%'} top={'2%'} size={2} />
+            <Circle left={'50%'} top={'0%'} size={2} />
+            <Circle left={'90%'} top={'1%'} size={2} />
+            <Circle left={'95%'} top={'5%'} size={2} />
+            <Circle left={'70%'} top={'5%'} size={2} />
+            <Circle left={'45%'} top={'5%'} size={2} />
+            <Circle left={'18%'} top={'5%'} size={2} />
+
+            <Circle left={'50%'} top={'10%'} size={3} />
+            <Circle left={'60%'} top={'8%'} size={3} />
+            <Circle left={'75%'} top={'10%'} size={3} />
+            <Circle left={'23%'} top={'20%'} size={3} />
+            <Circle left={'90%'} top={'20%'} size={3} />
+            <Circle left={'6%'} top={'20%'} size={3} />
+
+            <Circle left={'2%'} top={'30%'} size={3} />
+            <Circle left={'24%'} top={'50%'} size={3} />
+            <Circle left={'87%'} top={'40%'} size={3} />
+            <Circle left={'80%'} top={'58%'} size={5} />
+
+            <Circle left={'55%'} top={'17%'} size={14} />
+
+            <Circle left={'95%'} top={'90%'} size={2} />
+            <Circle left={'70%'} top={'80%'} size={2} />
+            <Circle left={'45%'} top={'70%'} size={2} />
+            <Circle left={'18%'} top={'96%'} size={2} />
+
+            <Circle left={'95%'} top={'86%'} size={2} />
+            <Circle left={'70%'} top={'94%'} size={2} />
+            <Circle left={'45%'} top={'89%'} size={2} />
+            <Circle left={'18%'} top={'54%'} size={2} />
+
+            <Circle left={'10%'} top={'99%'} size={5} />
+            <Circle left={'96%'} top={'98%'} size={2} />
+
+            <Circle left={'75%'} top={'90%'} size={5} />
+            <Circle left={'23%'} top={'80%'} size={5} />
+            <Circle left={'90%'} top={'70%'} size={5} />
+            <Circle left={'6%'} top={'85%'} size={5} />
+
             <View style={styles.bigSun}>
                 <BigSun width={wP('13%')} fill={"black"} />
             </View>
@@ -22,6 +64,7 @@ const SignUpScreen = props => {
             <View style={styles.sun}>
                 <Sun width={wP('30%')} fill={"black"} />
             </View>
+
             <View style={styles.screen}>
                 <View>
                     <Text style={styles.title}>
@@ -42,11 +85,15 @@ const SignUpScreen = props => {
                 </View>
                 <View style={styles.label}>
                     <Text style={styles.firstText}>Already have an account?   </Text>
-                    <Text style={{ color: '#D13AF7', textDecorationLine: 'underline' }}>Login</Text>
+                    <TouchableOpacity>
+                        <Text style={{ color: '#D13AF7', textDecorationLine: 'underline' }}>Login</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.label}>
                     <Text style={styles.firstText}>I have read the   </Text>
-                    <Text style={{ color: '#D13AF7', textDecorationLine: 'underline' }}>Terms & Condition</Text>
+                    <TouchableOpacity>
+                        <Text style={{ color: '#D13AF7', textDecorationLine: 'underline' }}>Terms & Condition</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </>

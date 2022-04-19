@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { hP } from '../../functions/getDPFromPercent';
 
 const Button = props => {
     return (
