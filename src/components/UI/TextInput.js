@@ -17,6 +17,7 @@ export default TextInput;
 
 const styles = StyleSheet.create({
     textInput: {
+        flex: 1,
         borderWidth: 1,
         borderRadius: 10,
         borderColor: 'rgba(255,255,255, 0.35)',
