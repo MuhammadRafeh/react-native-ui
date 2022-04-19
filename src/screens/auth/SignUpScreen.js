@@ -6,6 +6,7 @@ import Sun from '../../assets/images/signup/sun.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import theme from '../../constants/theme';
 import TextInput from '../../components/UI/TextInput';
+import { hP, wP } from '../../functions/getDPFromPercent';
 
 const SignUpScreen = props => {
     return (
@@ -26,10 +27,13 @@ const SignUpScreen = props => {
                         SIGN UP
                     </Text>
                 </View>
-                <View style={{}}>
-
+                <View style={styles.textInputContainer}>
+                    <TextInput />
                 </View>
-                <View>
+                <View style={styles.textInputContainer}>
+                    <TextInput />
+                </View>
+                <View style={styles.textInputContainer}>
                     <TextInput />
                 </View>
             </View>
@@ -50,5 +54,11 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0
+    },
+    textInputContainer: {
+        width: wP('90%'),
+        height: hP('8%'),
+        alignSelf: 'center',
+        marginVertical: 16
     }
 })
