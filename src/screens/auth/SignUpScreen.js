@@ -94,13 +94,13 @@ const SignUpScreen = props => {
                 <View style={styles.label}>
                     <Text style={styles.firstText}>Already have an account?   </Text>
                     <TouchableOpacity onPress={handleLoginPress}>
-                        <Text style={{ color: theme.pink, textDecorationLine: 'underline' }}>Login</Text>
+                        <Text style={styles.actions}>Login</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.label}>
                     <Text style={styles.firstText}>I have read the   </Text>
                     <TouchableOpacity onPress={handleTermsAndConPress}>
-                        <Text style={{ color: theme.pink, textDecorationLine: 'underline' }}>Terms & Condition</Text>
+                        <Text style={styles.actions}>Terms & Condition</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -157,5 +157,9 @@ const styles = StyleSheet.create({
         top: hP('13.5%'),
         right: '-2%',
         position: 'absolute'
+    },
+    actions: {
+        color: theme.pink,
+        textDecorationLine: 'underline'
     }
 })
