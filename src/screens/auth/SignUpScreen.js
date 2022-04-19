@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import BigSun from '../../assets/images/signup/bigSun.svg';
 import RunSun from '../../assets/images/signup/runSun.svg';
 import Sun from '../../assets/images/signup/sun.svg';
@@ -11,6 +11,14 @@ import Button from '../../components/UI/Button';
 import Circle from '../../components/UI/Circle';
 
 const SignUpScreen = props => {
+
+    const handleLoginPress = () => {
+        props.navigation.navigate('Login')
+    }
+    const handleTermsAndConPress = () => {
+        props.navigation.navigate('TermsAndCondition');
+    }
+
     return (
         <>
             <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={styles.linearGradient} />
@@ -85,14 +93,14 @@ const SignUpScreen = props => {
                 </View>
                 <View style={styles.label}>
                     <Text style={styles.firstText}>Already have an account?   </Text>
-                    <TouchableOpacity>
-                        <Text style={{ color: '#D13AF7', textDecorationLine: 'underline' }}>Login</Text>
+                    <TouchableOpacity onPress={handleLoginPress}>
+                        <Text style={{ color: theme.pink, textDecorationLine: 'underline' }}>Login</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.label}>
                     <Text style={styles.firstText}>I have read the   </Text>
-                    <TouchableOpacity>
-                        <Text style={{ color: '#D13AF7', textDecorationLine: 'underline' }}>Terms & Condition</Text>
+                    <TouchableOpacity onPress={handleTermsAndConPress}>
+                        <Text style={{ color: theme.pink, textDecorationLine: 'underline' }}>Terms & Condition</Text>
                     </TouchableOpacity>
                 </View>
             </View>

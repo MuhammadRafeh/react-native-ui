@@ -1,5 +1,6 @@
 export default {
     primary: '#226AC6',
     secondary: '#351E76',
-    tertairy: '#4D2384'
+    tertairy: '#4D2384',
+    pink: '#D13AF7'
 }
