@@ -13,13 +13,13 @@ const SignUpScreen = props => {
     return (
         <>
             <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={styles.linearGradient} />
-            <View style={{ top: '8%', left: '19.7%', position: 'absolute' }}>
+            <View style={styles.bigSun}>
                 <BigSun width={wP('13%')} fill={"black"} />
             </View>
-            <View style={{ top: hP('13.5%'), right: '-2%', position: 'absolute' }}>
+            <View style={styles.runSun}>
                 <RunSun width={wP('25%')} fill={"black"} />
             </View>
-            <View style={{ right: '-5.7%', bottom: hP('14%'), position: 'absolute' }}>
+            <View style={styles.sun}>
                 <Sun width={wP('30%')} fill={"black"} />
             </View>
             <View style={styles.screen}>
@@ -87,5 +87,20 @@ const styles = StyleSheet.create({
     },
     firstText: {
         opacity: 0.6
+    },
+    bigSun: {
+        top: '6%',
+        left: '19.7%',
+        position: 'absolute'
+    },
+    sun: {
+        right: '-5.7%',
+        bottom: hP('14%'),
+        position: 'absolute'
+    },
+    runSun: {
+        top: hP('13.5%'),
+        right: '-2%',
+        position: 'absolute'
     }
 })
