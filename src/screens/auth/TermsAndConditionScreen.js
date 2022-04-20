@@ -14,8 +14,34 @@ import getFontSize from '../../functions/getFontSize';
 const TermsAndConditionScreen = props => {
     return (
         <>
-
             <LinearGradient colors={[theme.secondary, theme.secondary, theme.secondary, theme.primary]} style={styles.linearGradient} />
+
+            <Circle left={'10%'} top={'6%'} size={2} />
+            <Circle left={'50%'} top={'0%'} size={2} />
+            <Circle left={'95%'} top={'5%'} size={2} />
+            <Circle left={'70%'} top={'5%'} size={2} />
+            <Circle left={'18%'} top={'5%'} size={2} />
+
+            <Circle left={'50%'} top={'10%'} size={3} />
+            <Circle left={'60%'} top={'8%'} size={3} />
+            <Circle left={'75%'} top={'10%'} size={3} />
+            <Circle left={'23%'} top={'20%'} size={3} />
+            <Circle left={'90%'} top={'20%'} size={3} />
+            <Circle left={'6%'} top={'20%'} size={3} />
+
+            <Circle left={'95%'} top={'86%'} size={2} />
+            <Circle left={'70%'} top={'94%'} size={2} />
+            <Circle left={'45%'} top={'89%'} size={2} />
+            <Circle left={'18%'} top={'54%'} size={2} />
+
+            <Circle left={'10%'} top={'99%'} size={5} />
+            <Circle left={'96%'} top={'98%'} size={2} />
+
+            <Circle left={'76%'} top={'90%'} size={5} />
+            <Circle left={'24%'} top={'80%'} size={5} />
+            <Circle left={'91%'} top={'70%'} size={5} />
+            <Circle left={'7%'} top={'85%'} size={5} />
+
             <View style={styles.planet}>
                 <Planet width={wP('50%')} fill={"black"} />
             </View>
