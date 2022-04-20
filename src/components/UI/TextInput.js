@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput as VanillaTextInput, StyleSheet, View } from 'react-native';
+import { TextInput as VanillaTextInput, StyleSheet } from 'react-native';
 
 const TextInput = props => {
     const { value, onChangeText } = props;

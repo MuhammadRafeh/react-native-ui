@@ -9,6 +9,7 @@ import TextInput from '../../components/UI/TextInput';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import Button from '../../components/UI/Button';
 import Circle from '../../components/UI/Circle';
+import getFontSize from '../../functions/getFontSize';
 
 const SignUpScreen = props => {
 
@@ -43,7 +44,7 @@ const SignUpScreen = props => {
             <Circle left={'87%'} top={'40%'} size={3} />
             <Circle left={'80%'} top={'58%'} size={5} />
 
-            <Circle left={'55%'} top={'17%'} size={14} />
+            <Circle left={'57%'} top={'16%'} size={14} />
 
             <Circle left={'95%'} top={'90%'} size={2} />
             <Circle left={'70%'} top={'80%'} size={2} />
@@ -91,17 +92,19 @@ const SignUpScreen = props => {
                 <View style={styles.contentContainer}>
                     <Button title={'SIGN UP'} />
                 </View>
-                <View style={styles.label}>
-                    <Text style={styles.firstText}>Already have an account?   </Text>
-                    <TouchableOpacity onPress={handleLoginPress}>
-                        <Text style={styles.actions}>Login</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.label}>
-                    <Text style={styles.firstText}>I have read the   </Text>
-                    <TouchableOpacity onPress={handleTermsAndConPress}>
-                        <Text style={styles.actions}>Terms & Condition</Text>
-                    </TouchableOpacity>
+                <View style={styles.actionContainer}>
+                    <View style={styles.label}>
+                        <Text style={styles.firstText}>Already have an account?   </Text>
+                        <TouchableOpacity onPress={handleLoginPress}>
+                            <Text style={styles.actions}>Login</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.label}>
+                        <Text style={styles.firstText}>I have read the   </Text>
+                        <TouchableOpacity onPress={handleTermsAndConPress}>
+                            <Text style={styles.actions}>Terms & Condition</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </>
@@ -124,8 +127,14 @@ const styles = StyleSheet.create({
     },
     title: {
         textAlign: 'center',
-        fontSize: 25,
-        marginBottom: 8
+        fontSize: getFontSize(25),
+        marginBottom: 8,
+        fontFamily: '3',
+        letterSpacing: 0.5,
+        top: 4,
+        transform: [
+            { rotate: '-0.2deg' }
+        ]
     },
     contentContainer: {
         width: wP('90%'),
@@ -141,7 +150,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     firstText: {
-        opacity: 0.6
+        opacity: 0.6,
+        fontFamily: '14',
+        letterSpacing: 0.15
     },
     bigSun: {
         top: '6%',
@@ -160,6 +171,10 @@ const styles = StyleSheet.create({
     },
     actions: {
         color: theme.pink,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        fontFamily: '12'
+    },
+    actionContainer: {
+        marginTop: 5
     }
 })

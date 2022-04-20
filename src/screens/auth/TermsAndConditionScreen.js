@@ -47,7 +47,6 @@ const TermsAndConditionScreen = props => {
                     </Text>
                 </View>
 
-
                 <View style={{ marginBottom: hP('1%') }}>
                     <Text style={{ fontFamily: '15', fontSize: getFontSize(13.5), letterSpacing: 0.2 }}>
                         Lorem Ipsum is simply dummy?
@@ -59,7 +58,6 @@ const TermsAndConditionScreen = props => {
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                     </Text>
                 </View>
-
 
             </View>
         </>

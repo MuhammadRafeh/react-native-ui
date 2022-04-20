@@ -33,6 +33,12 @@ const styles = StyleSheet.create({
         opacity: 0.7
     },
     title: {
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: '1',
+        letterSpacing: 0.4,
+        top: 2,
+        transform: [
+            { rotate: '-0.5deg' }
+        ]
     }
 })
