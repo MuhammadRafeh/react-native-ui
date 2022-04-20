@@ -64,7 +64,7 @@ const TermsAndConditionScreen = props => {
                     <Text style={{ fontFamily: '15', fontSize: getFontSize(13.5), letterSpacing: 0.2 }}>Lorem Ipsum is simply dummy?</Text>
                 </View>
                 <View style={{ marginBottom: hP('4%'), width: wP('75%') }}>
-                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13) }}>
+                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13), letterSpacing: 0.2 }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -79,7 +79,7 @@ const TermsAndConditionScreen = props => {
                     </Text>
                 </View>
                 <View style={{ width: wP('75%') }}>
-                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13) }}>
+                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13), letterSpacing: 0.2 }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                     </Text>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     },
     octagon: {
         position: 'absolute',
-        top: '83%',
+        top: '84%',
         left: '35%'
     }
 })
