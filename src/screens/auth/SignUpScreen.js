@@ -4,7 +4,7 @@ import BigSun from '../../assets/images/signup/bigSun.svg';
 import RunSun from '../../assets/images/signup/runSun.svg';
 import Sun from '../../assets/images/signup/sun.svg';
 import LinearGradient from 'react-native-linear-gradient';
-import theme from '../../constants/theme';
+import theme, { linearGradient } from '../../constants/theme';
 import TextInput from '../../components/UI/TextInput';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import Button from '../../components/UI/Button';
@@ -22,7 +22,7 @@ const SignUpScreen = props => {
 
     return (
         <>
-            <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={styles.linearGradient} />
+            <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={linearGradient.style} />
 
             <Circle left={'10%'} top={'2%'} size={2} />
             <Circle left={'50%'} top={'0%'} size={2} />
@@ -117,13 +117,6 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center'
-    },
-    linearGradient: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
     },
     title: {
         textAlign: 'center',

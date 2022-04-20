@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import theme from '../../constants/theme';
+import theme, { linearGradient } from '../../constants/theme';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import Circle from '../../components/UI/Circle';
 
@@ -14,7 +14,7 @@ import getFontSize from '../../functions/getFontSize';
 const TermsAndConditionScreen = props => {
     return (
         <>
-            <LinearGradient colors={[theme.secondary, theme.secondary, theme.secondary, theme.primary]} style={styles.linearGradient} />
+            <LinearGradient colors={[theme.secondary, theme.secondary, theme.secondary, theme.primary]} style={linearGradient.style} />
 
             <Circle left={'10%'} top={'6%'} size={2} />
             <Circle left={'50%'} top={'0%'} size={2} />
@@ -93,13 +93,6 @@ const TermsAndConditionScreen = props => {
 export default TermsAndConditionScreen;
 
 const styles = StyleSheet.create({
-    linearGradient: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-    },
     planet: {
         position: 'absolute',
         right: 0
