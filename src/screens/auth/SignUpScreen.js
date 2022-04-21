@@ -60,9 +60,8 @@ const SignUpScreen = props => {
 
     return (
         <>
-            {/* <Animatable.View></Animatable.View> */}
             <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={linearGradient.style} />
-            {/* <TX /> */}
+
             <Circle left={'10%'} top={'2%'} size={2} />
             <Circle left={'50%'} top={'0%'} size={2} />
             <Circle left={'90%'} top={'1%'} size={2} />
