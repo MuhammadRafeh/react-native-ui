@@ -2,13 +2,10 @@ import React from 'react';
 import { TextInput as VanillaTextInput, StyleSheet } from 'react-native';
 
 const TextInput = props => {
-    const { value, onChangeText } = props;
     return (
         <VanillaTextInput
-            style={styles.textInput}
-            value={value}
-            onChangeText={onChangeText}
             {...props}
+            style={[styles.textInput, props.style]}
         />
     );
 }
@@ -24,6 +21,7 @@ const styles = StyleSheet.create({
         paddingLeft: 21,
         paddingTop: 15,
         paddingBottom: 18,
+        paddingRight: 31,
         fontSize: 16,
         backgroundColor: 'rgba(255, 228, 242, 0.1)'
     }

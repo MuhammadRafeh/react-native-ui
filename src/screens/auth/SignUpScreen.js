@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput as TX, Keyboard } from 'react-native';
 import BigSun from '../../assets/images/signup/bigSun.svg';
 import RunSun from '../../assets/images/signup/runSun.svg';
 import Sun from '../../assets/images/signup/sun.svg';
@@ -10,8 +10,25 @@ import { hP, wP } from '../../functions/getDPFromPercent';
 import Button from '../../components/UI/Button';
 import Circle from '../../components/UI/Circle';
 import getFontSize from '../../functions/getFontSize';
+import validateEmail from '../../functions/validateEmail';
+import * as Animatable from 'react-native-animatable';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const SignUpScreen = props => {
+
+    const emailRef = useRef(null);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [fullName, setFullName] = useState('');
+
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [isPasswordValid, setIsPasswordValid] = useState(false);
+    // const [isFullNameValid, setIsFullNameValid] = useState(false);
+
+    const [hidePassword, setHidePassword] = useState(true);
+
+    const [wasSignUpPressed, setWasSignUpPressed] = useState(false);
 
     const handleLoginPress = () => {
         props.navigation.navigate('Login')
@@ -20,10 +37,32 @@ const SignUpScreen = props => {
         props.navigation.navigate('TermsAndCondition');
     }
 
+    const handleInputChange = (type, text) => {
+        if (type == 'email') {
+            setEmail(text);
+        } else if (type == 'password') {
+            setPassword(text)
+        } else if (type == 'fullName') {
+            setFullName(text);
+        }
+    }
+
+    const handleSignUp = () => {
+        setWasSignUpPressed(true);
+        Keyboard.dismiss();
+        if (!validateEmail(email)) {
+            setIsEmailValid(false);
+            emailRef.current?.bounceIn();
+        } else {
+            setIsEmailValid(true);
+        }
+    }
+
     return (
         <>
+            {/* <Animatable.View></Animatable.View> */}
             <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={linearGradient.style} />
-
+            {/* <TX /> */}
             <Circle left={'10%'} top={'2%'} size={2} />
             <Circle left={'50%'} top={'0%'} size={2} />
             <Circle left={'90%'} top={'1%'} size={2} />
@@ -80,17 +119,22 @@ const SignUpScreen = props => {
                         SIGN UP
                     </Text>
                 </View>
+                <Animatable.View style={[styles.contentContainer, wasSignUpPressed ? isEmailValid ? null : styles.error : null]} useNativeDriver={true} ref={emailRef}>
+                    <TextInput placeholder="Email" value={email} onChangeText={handleInputChange.bind(null, 'email')} />
+                </Animatable.View>
+                <Animatable.View style={styles.contentContainer} useNativeDriver={true}>
+                    <TextInput style={{ paddingRight: 50 }} placeholder="Password" value={password} onChangeText={handleInputChange.bind(null, 'password')} secureTextEntry={hidePassword} />
+                    <TouchableOpacity style={{ position: 'absolute', right: 10, top: '23%' }} onPress={() => setHidePassword(!hidePassword)}>
+                        <Text numberOfLines={1} adjustsFontSizeToFit={true}>
+                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={30} />
+                        </Text>
+                    </TouchableOpacity>
+                </Animatable.View>
+                <Animatable.View style={styles.contentContainer} useNativeDriver={true}>
+                    <TextInput placeholder="Full Name" value={fullName} onChangeText={handleInputChange.bind(null, 'fullName')} />
+                </Animatable.View>
                 <View style={styles.contentContainer}>
-                    <TextInput placeholder="Email" />
-                </View>
-                <View style={styles.contentContainer}>
-                    <TextInput placeholder="Password" />
-                </View>
-                <View style={styles.contentContainer}>
-                    <TextInput placeholder="Full Name" />
-                </View>
-                <View style={styles.contentContainer}>
-                    <Button title={'SIGN UP'} />
+                    <Button title={'SIGN UP'} onPress={handleSignUp} />
                 </View>
                 <View style={styles.actionContainer}>
                     <View style={styles.label}>
@@ -169,5 +213,10 @@ const styles = StyleSheet.create({
     },
     actionContainer: {
         marginTop: 5
+    },
+    error: {
+        borderColor: 'red',
+        borderWidth: 1,
+        borderRadius: 10
     }
 })
