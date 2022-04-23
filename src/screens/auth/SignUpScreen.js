@@ -118,23 +118,33 @@ const SignUpScreen = props => {
                         SIGN UP
                     </Text>
                 </View>
-                <Animatable.View style={[styles.contentContainer, wasSignUpPressed ? isEmailValid ? null : styles.error : null]} useNativeDriver={true} ref={emailRef}>
-                    <TextInput placeholder="Email" value={email} onChangeText={handleInputChange.bind(null, 'email')} />
+
+                <Animatable.View style={styles.contentContainer} useNativeDriver={true} ref={emailRef}>
+                    <TextInput
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={handleInputChange.bind(null, 'email')}
+                        style={wasSignUpPressed ? isEmailValid ? null : styles.error : null}
+                    />
                 </Animatable.View>
+
                 <Animatable.View style={styles.contentContainer} useNativeDriver={true}>
                     <TextInput style={{ paddingRight: 50 }} placeholder="Password" value={password} onChangeText={handleInputChange.bind(null, 'password')} secureTextEntry={hidePassword} />
                     <TouchableOpacity style={{ position: 'absolute', right: 10, top: '23%' }} onPress={() => setHidePassword(!hidePassword)}>
-                        <Text numberOfLines={1} adjustsFontSizeToFit={true}>
-                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={30} />
+                        <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.eye}>
+                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={getFontSize(26)} />
                         </Text>
                     </TouchableOpacity>
                 </Animatable.View>
+
                 <Animatable.View style={styles.contentContainer} useNativeDriver={true}>
                     <TextInput placeholder="Full Name" value={fullName} onChangeText={handleInputChange.bind(null, 'fullName')} />
                 </Animatable.View>
+
                 <View style={styles.contentContainer}>
                     <Button title={'SIGN UP'} onPress={handleSignUp} />
                 </View>
+
                 <View style={styles.actionContainer}>
                     <View style={styles.label}>
                         <Text style={styles.firstText}>Already have an account?   </Text>
@@ -142,6 +152,7 @@ const SignUpScreen = props => {
                             <Text style={styles.actions}>Login</Text>
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.label}>
                         <Text style={styles.firstText}>I have read the   </Text>
                         <TouchableOpacity onPress={handleTermsAndConPress}>
@@ -149,6 +160,7 @@ const SignUpScreen = props => {
                         </TouchableOpacity>
                     </View>
                 </View>
+
             </View>
         </>
     );
@@ -214,8 +226,9 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     error: {
-        borderColor: 'red',
-        borderWidth: 1,
-        borderRadius: 10
+        borderColor: 'red'
+    },
+    eye: {
+        opacity: 0.65
     }
 })

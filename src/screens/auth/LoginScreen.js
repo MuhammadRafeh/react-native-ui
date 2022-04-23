@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Button from '../../components/UI/Button';
 import validateEmail from '../../functions/validateEmail';
 import getFontSize from '../../functions/getFontSize';
+import Circle from '../../components/UI/Circle';
 
 const LoginScreen = props => {
 
@@ -45,7 +46,55 @@ const LoginScreen = props => {
     return (
         <>
             <LinearGradient colors={[theme.primary, theme.secondary, theme.secondary, theme.tertairy, theme.tertairy]} style={linearGradient.style} />
+            <Circle left={'10%'} top={'2%'} size={2} />
+            <Circle left={'50%'} top={'0%'} size={2} />
+            <Circle left={'90%'} top={'1%'} size={2} />
+            <Circle left={'95%'} top={'5%'} size={2} />
+            <Circle left={'70%'} top={'5%'} size={2} />
+            <Circle left={'45%'} top={'5%'} size={2} />
+            <Circle left={'18%'} top={'5%'} size={2} />
 
+            <Circle left={'50%'} top={'10%'} size={3} />
+            <Circle left={'60%'} top={'8%'} size={3} />
+            <Circle left={'75%'} top={'10%'} size={3} />
+            <Circle left={'23%'} top={'20%'} size={3} />
+            <Circle left={'90%'} top={'20%'} size={3} />
+            <Circle left={'6%'} top={'20%'} size={3} />
+
+            <Circle left={'2%'} top={'30%'} size={3} />
+            <Circle left={'24%'} top={'50%'} size={3} />
+            <Circle left={'87%'} top={'40%'} size={3} />
+            <Circle left={'80%'} top={'58%'} size={5} />
+
+            <Circle left={'20%'} top={'70%'} size={3} />
+            <Circle left={'30%'} top={'85%'} size={3} />
+            <Circle left={'65%'} top={'34%'} size={3} />
+            <Circle left={'73%'} top={'67%'} size={3} />
+            <Circle left={'30%'} top={'23%'} size={3} />
+            <Circle left={'6%'} top={'43%'} size={3} />
+
+            <Circle left={'67%'} top={'30%'} size={3} />
+            <Circle left={'3%'} top={'10%'} size={3} />
+            <Circle left={'67%'} top={'20%'} size={3} />
+            <Circle left={'30%'} top={'68%'} size={5} />
+
+            <Circle left={'95%'} top={'90%'} size={2} />
+            <Circle left={'70%'} top={'80%'} size={2} />
+            <Circle left={'45%'} top={'70%'} size={2} />
+            <Circle left={'18%'} top={'96%'} size={2} />
+
+            <Circle left={'95%'} top={'86%'} size={2} />
+            <Circle left={'70%'} top={'94%'} size={2} />
+            <Circle left={'45%'} top={'89%'} size={2} />
+            <Circle left={'18%'} top={'54%'} size={2} />
+
+            <Circle left={'10%'} top={'99%'} size={5} />
+            <Circle left={'96%'} top={'98%'} size={2} />
+
+            <Circle left={'75%'} top={'90%'} size={5} />
+            <Circle left={'23%'} top={'80%'} size={5} />
+            <Circle left={'90%'} top={'70%'} size={5} />
+            <Circle left={'6%'} top={'85%'} size={5} />
             <View style={styles.circular}>
                 <Circular width={wP('15%')} fill={"black"} />
             </View>
@@ -64,15 +113,20 @@ const LoginScreen = props => {
                     </Text>
                 </View>
 
-                <Animatable.View style={[styles.contentContainer, wasSignUpPressed ? isEmailValid ? null : styles.error : null]} useNativeDriver={true} ref={emailRef}>
-                    <TextInput placeholder="Email" value={email} onChangeText={handleInputChange.bind(null, 'email')} />
+                <Animatable.View style={styles.contentContainer} useNativeDriver={true} ref={emailRef}>
+                    <TextInput
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={handleInputChange.bind(null, 'email')}
+                        style={wasSignUpPressed ? isEmailValid ? null : styles.error : null}
+                    />
                 </Animatable.View>
 
                 <Animatable.View style={styles.contentContainer} useNativeDriver={true}>
                     <TextInput style={{ paddingRight: 50 }} placeholder="Password" value={password} onChangeText={handleInputChange.bind(null, 'password')} secureTextEntry={hidePassword} />
                     <TouchableOpacity style={{ position: 'absolute', right: 10, top: '23%' }} onPress={() => setHidePassword(!hidePassword)}>
-                        <Text numberOfLines={1} adjustsFontSizeToFit={true}>
-                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={30} />
+                        <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.eye}>
+                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={getFontSize(26)} />
                         </Text>
                     </TouchableOpacity>
                 </Animatable.View>
@@ -154,4 +208,10 @@ const styles = StyleSheet.create({
         fontFamily: '14',
         letterSpacing: 0.15
     },
+    error: {
+        borderColor: 'red'
+    },
+    eye: {
+        opacity: 0.65
+    }
 })
