@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-import { Text, View, Pressable, Dimensions, StyleSheet } from 'react-native'
+import { Text, View, Pressable, Dimensions, StyleSheet, Animated } from 'react-native'
 import NavigationIcon from './NavigationIcon';
 import LinearGradient from 'react-native-linear-gradient';
-import { linearGradient } from '../../../constants/theme';
 import MaskedView from '@react-native-masked-view/masked-view';
+import Indicator from './Indicator';
 
 const { width } = Dimensions.get('window')
 
 const TabBar = ({ state, descriptors, navigation }) => {
+    const indicator = useRef(new Animated.Value(0)).current;
+
     return (
         <View style={styles.mainContainer}>
+            <Animated.View style={{
+                position: 'absolute',
+                width: width / 4,
+                justifyContent: 'center',
+                alignItems: 'center',
+                transform: [
+                    { translateX: indicator }
+                ]
+            }}
+            >
+                <Indicator />
+            </Animated.View>
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =
@@ -31,6 +45,12 @@ const TabBar = ({ state, descriptors, navigation }) => {
                     if (!isFocused && !event.defaultPrevented) {
                         navigation.navigate(route.name);
                     }
+
+                    Animated.timing(indicator, {
+                        toValue: (width / 4) * index,
+                        duration: 100,
+                        useNativeDriver: true,
+                    }).start();
                 };
 
                 return (

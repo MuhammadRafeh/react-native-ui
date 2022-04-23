@@ -17,7 +17,7 @@ function BottomTabNavigator() {
                     borderTopLeftRadius: 15
                 }
             }}
-            tabBar={TabBar}
+            tabBar={props => <TabBar {...props} />}
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Subscription" component={SubscriptionScreen} />
