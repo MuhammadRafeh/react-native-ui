@@ -13,8 +13,12 @@ import Button from '../../components/UI/Button';
 import validateEmail from '../../functions/validateEmail';
 import getFontSize from '../../functions/getFontSize';
 import Circle from '../../components/UI/Circle';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../../store/actions';
 
 const LoginScreen = props => {
+
+    const dispatch = useDispatch();
 
     const emailRef = useRef(null);
 
@@ -34,6 +38,7 @@ const LoginScreen = props => {
 
     const handleSignin = () => {
         setWasSignUpPressed(true);
+        dispatch(authenticate(email, password, true))
         Keyboard.dismiss();
         if (!validateEmail(email)) {
             setIsEmailValid(false);
@@ -41,6 +46,14 @@ const LoginScreen = props => {
         } else {
             setIsEmailValid(true);
         }
+    }
+
+    const handleForgotPressed = () => {
+
+    }
+
+    const handleSignupPressed = () => {
+
     }
 
     return (
@@ -136,16 +149,16 @@ const LoginScreen = props => {
                 </View>
 
                 <View style={styles.lastRowText}>
-                    <View>
+                    <TouchableOpacity onPress={handleForgotPressed}>
                         <Text style={styles.firstText}>
                             Forgot Password?
                         </Text>
-                    </View>
-                    <View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={handleSignupPressed}>
                         <Text style={styles.actions}>
                             Sign Up
                         </Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -158,7 +171,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        top: hP('25%')
+        justifyContent: 'center'
     },
     planet: {
         right: '3%',
