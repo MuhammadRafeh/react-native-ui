@@ -139,7 +139,7 @@ const LoginScreen = props => {
                     <TextInput style={{ paddingRight: 50 }} placeholder="Password" value={password} onChangeText={handleInputChange.bind(null, 'password')} secureTextEntry={hidePassword} />
                     <TouchableOpacity style={{ position: 'absolute', right: 10, top: '23%' }} onPress={() => setHidePassword(!hidePassword)}>
                         <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.eye}>
-                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={getFontSize(26)} />
+                            <Icon name={hidePassword ? 'eye' : 'eye-off'} size={getFontSize(26)} color="#fff" />
                         </Text>
                     </TouchableOpacity>
                 </Animatable.View>
@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     },
     title: {
         textAlign: 'center',
+        color: '#fff',
         fontSize: getFontSize(25),
         marginBottom: 7,
         fontFamily: '3',
@@ -219,7 +220,8 @@ const styles = StyleSheet.create({
     firstText: {
         opacity: 0.6,
         fontFamily: '14',
-        letterSpacing: 0.15
+        letterSpacing: 0.15,
+        color: '#fff'
     },
     error: {
         borderColor: 'red'

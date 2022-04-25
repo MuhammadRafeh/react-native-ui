@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 const HomeScreen = props => {
     return (
-        <View style={styles.screen} />
+        <View style={styles.screen} >
+            <Text>asd</Text>
+        </View>
     );
 }
 
@@ -11,6 +13,7 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1
+        flex: 1,
+        // backgroundColor: 'green'
     }
 })

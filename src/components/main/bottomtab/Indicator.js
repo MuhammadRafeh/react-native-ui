@@ -24,8 +24,8 @@ const Indicator = (props) => (
                 y2={8.058}
                 gradientUnits="userSpaceOnUse"
             >
-                <Stop stopColor="#7541ED" stopOpacity={0.52} />
-                <Stop offset={1} stopColor="#D13AF7" stopOpacity={0.52} />
+                <Stop stopColor="#7541ED" />
+                <Stop offset={1} stopColor="#D13AF7" />
             </LinearGradient>
         </Defs>
     </Svg>

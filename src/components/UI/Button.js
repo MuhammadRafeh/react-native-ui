@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
         fontFamily: '1',
         letterSpacing: 0.4,
         top: 2,
+        color: '#fff',
         transform: [
             { rotate: '-0.5deg' }
         ]

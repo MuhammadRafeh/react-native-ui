@@ -43,7 +43,7 @@ const TermsAndConditionScreen = props => {
             <Circle left={'7%'} top={'85%'} size={5} />
 
             <View style={styles.planet}>
-                <Planet width={wP('50%')} fill={"black"} />
+                <Planet width={wP('40%')} fill={"black"} />
             </View>
             <View style={styles.spaceship}>
                 <SpaceShip width={wP('13%')} fill={"black"} />
@@ -57,14 +57,14 @@ const TermsAndConditionScreen = props => {
 
             <View style={{ flex: 1, marginTop: wP('50%'), width: wP('90%'), alignSelf: 'center' }}>
                 <View style={{ marginBottom: hP('2%') }}>
-                    <Text style={{ fontSize: getFontSize(39.5), fontFamily: '3', letterSpacing: 0.5 }} numberOfLines={1} adjustsFontSizeToFit={true}>TERMS & CONDITION</Text>
+                    <Text style={{ fontSize: getFontSize(39.5), fontFamily: '3', letterSpacing: 0.5, color: '#fff' }} numberOfLines={1} adjustsFontSizeToFit={true}>TERMS & CONDITION</Text>
                 </View>
 
                 <View style={{ marginBottom: hP('1%') }}>
-                    <Text style={{ fontFamily: '15', fontSize: getFontSize(13.5), letterSpacing: 0.2 }}>Lorem Ipsum is simply dummy?</Text>
+                    <Text style={{ fontFamily: '15', fontSize: getFontSize(13.5), letterSpacing: 0.2, color: '#fff' }}>Lorem Ipsum is simply dummy?</Text>
                 </View>
                 <View style={{ marginBottom: hP('4%'), width: wP('75%') }}>
-                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13), letterSpacing: 0.2 }}>
+                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13), letterSpacing: 0.2, color: '#fff' }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -74,12 +74,12 @@ const TermsAndConditionScreen = props => {
                 </View>
 
                 <View style={{ marginBottom: hP('1%') }}>
-                    <Text style={{ fontFamily: '15', fontSize: getFontSize(13.5), letterSpacing: 0.2 }}>
+                    <Text style={{ fontFamily: '15', fontSize: getFontSize(13.5), letterSpacing: 0.2, color: '#fff' }}>
                         Lorem Ipsum is simply dummy?
                     </Text>
                 </View>
                 <View style={{ width: wP('75%') }}>
-                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13), letterSpacing: 0.2 }}>
+                    <Text style={{ opacity: 0.8, fontFamily: '10', fontSize: getFontSize(13), letterSpacing: 0.2, color: '#fff' }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                     </Text>

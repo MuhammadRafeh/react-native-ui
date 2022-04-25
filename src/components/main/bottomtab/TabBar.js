@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { Text, View, Pressable, Dimensions, StyleSheet, Animated } from 'react-native'
 import NavigationIcon from './NavigationIcon';
@@ -10,6 +10,14 @@ const { width } = Dimensions.get('window')
 
 const TabBar = ({ state, descriptors, navigation }) => {
     const indicator = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        Animated.timing(indicator, {
+            toValue: (width / 4) * state.index,
+            duration: 100,
+            useNativeDriver: true,
+        }).start();
+    }, [state.index])
 
     return (
         <View style={styles.mainContainer}>
@@ -45,38 +53,22 @@ const TabBar = ({ state, descriptors, navigation }) => {
                     if (!isFocused && !event.defaultPrevented) {
                         navigation.navigate(route.name);
                     }
-
-                    Animated.timing(indicator, {
-                        toValue: (width / 4) * index,
-                        duration: 100,
-                        useNativeDriver: true,
-                    }).start();
                 };
 
                 return (
-                    <View key={index} style={[styles.mainItemContainer, { borderRightWidth: label == "notes" ? 3 : 0 }]}>
+                    <View key={index} style={styles.mainItemContainer}>
                         <Pressable
                             onPress={onPress}
                             style={{ flex: 1, borderRadius: 20, }}>
                             <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                                <MaskedView
-                                    style={{ width: width / 4, height: 20 }}
-                                    maskElement={
-                                        <View style={{ alignItems: 'center' }}>
-                                            <NavigationIcon route={label} isFocused={isFocused} />
-                                        </View>
-                                    }
-                                >
-                                    <LinearGradient
-                                        colors={[isFocused ? '#7541ED' : '#696969', isFocused ? '#D13AF7' : '#696969']}
-                                        style={{ flex: 1 }}
-                                    />
-                                </MaskedView>
+
+                                <NavigationIcon route={label} isFocused={isFocused} />
+
                                 <View style={styles.textContainer}>
                                     <MaskedView
                                         style={{ width: width / 4, height: 20 }}
                                         maskElement={
-                                            <Text style={{ fontFamily: '10', textAlign: 'center', opacity: isFocused ? 1 : 0.5, fontSize: 12.8 }}>{route.name}</Text>
+                                            <Text style={{ fontFamily: '10', textAlign: 'center', opacity: isFocused ? 1 : 0.5, fontSize: 12.8, color: isFocused ? '#fff' : '#696969' }}>{route.name}</Text>
                                         }
                                     >
                                         <LinearGradient
@@ -106,7 +98,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 10,
-        borderRadius: 1,
         borderColor: "#333B42"
     },
     textContainer: {
