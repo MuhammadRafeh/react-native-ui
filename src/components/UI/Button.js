@@ -3,12 +3,13 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Button = props => {
-    const { title, onPress } = props;
+    const { title, onPress, style } = props;
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
             <>
                 <LinearGradient colors={['#8259F2', '#D751F9']} style={styles.linearGradient}
-                    start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} />
+                    start={{ x: 0, y: 1 }}
+                    end={{ x: 1, y: 1 }} />
                 <Text style={styles.title}>{title}</Text>
             </>
         </TouchableOpacity>

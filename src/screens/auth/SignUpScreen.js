@@ -233,4 +233,4 @@ const styles = StyleSheet.create({
     eye: {
         opacity: 0.65
     }
-})
+});
