@@ -5,7 +5,7 @@ import theme, { linearGradient } from '../../constants/theme';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import Circle from '../../components/UI/Circle';
 
-import Planet from '../../assets/images/termsandcondition/planet.svg';
+import Planet from '../../assets/images/global/planet.svg';
 import SpaceShip from '../../assets/images/termsandcondition/spaceship.svg';
 import Sun from '../../assets/images/termsandcondition/sun.svg';
 import Octagon from '../../assets/images/termsandcondition/octagon.svg';
