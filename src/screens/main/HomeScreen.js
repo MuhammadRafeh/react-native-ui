@@ -23,8 +23,10 @@ const HomeScreen = props => {
                 </View>
                 <View style={{ height: hP('80%') }}>
                     <SwipeCard
-                        image={require('../../assets/images/home/boy.jpeg')}
+                        name={'Amy Cole'}
+                        age={23}
                         chips={['Shopping', 'Travel', 'Music']}
+                        image={require('../../assets/images/home/boy.jpg')}
                     />
                 </View>
             </View>

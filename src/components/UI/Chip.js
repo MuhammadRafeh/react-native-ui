@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         paddingHorizontal: 10,
         marginHorizontal: 4,
-        marginVertical: 4
+        marginBottom: 5
     },
     text: {
         color: '#fff',

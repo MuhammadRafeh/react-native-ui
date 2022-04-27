@@ -8,17 +8,28 @@ import Current from '../../../assets/images/home/current.svg';
 import Fvrt from '../../../assets/images/home/fvrt.svg';
 import Chip from '../../UI/Chip';
 
-const SwipeCard = ({ image, chips }) => {
+const SwipeCard = ({ image, chips, name, age }) => {
     return (
         <View style={styles.container}>
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
                 <Image source={image} style={styles.image} resizeMode='cover' />
             </View>
 
+            <View style={styles.firstRow}>
+                <View style={styles.nameContainer}>
+                    <Text style={styles.name} numberOfLines={1}>
+                        {name}
+                    </Text>
+                </View>
+                <View style={styles.ageContainer}>
+                    <Text style={styles.age} numberOfLines={1} adjustsFontSizeToFit={true}>
+                        {age}
+                    </Text>
+                </View>
+            </View>
+
             <View style={styles.chipContainer}>
-                {
-                    chips.map(text => <Chip key={text} title={text} />)
-                }
+                {chips.map(text => <Chip key={text} title={text} />)}
             </View>
 
             <View style={styles.lastRow}>
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%',
-        opacity: 0.8
+        opacity: 0.7
     },
     iconContainer: {
         width: '20%',
@@ -72,7 +83,31 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 12,
-        marginVertical: 4,
+        marginBottom: 4,
         flexWrap: 'wrap'
+    },
+    firstRow: {
+        alignItems: 'center',
+        marginHorizontal: 17,
+        // top: 4,
+        flexDirection: 'row'
+    },
+    nameContainer: {
+        maxWidth: '76%',
+    },
+    name: {
+        fontSize: 28,
+        fontFamily: '1',
+        color: '#fff',
+        letterSpacing: 0.6
+    },
+    ageContainer: {
+        maxWidth: '24%',
+        marginLeft: 10
+    },
+    age: {
+        fontSize: 24,
+        fontFamily: '7',
+        color: '#fff'
     }
 })
