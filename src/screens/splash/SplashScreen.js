@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Comet from '../../assets/images/splash/Comet.svg';
 import Logo from '../../assets/images/global/Logo.svg';
@@ -9,6 +9,9 @@ import { linearGradient } from '../../constants/theme';
 import Circle from '../../components/UI/Circle';
 
 const SplashScreen = props => {
+    useEffect(() => {
+        setTimeout(() => props.navigation.replace('Signup'), 10);
+    }, [])
     return (
         <>
             <LinearGradient colors={['#0D6FCA', '#26006F', '#4B0384']} style={linearGradient.style} />

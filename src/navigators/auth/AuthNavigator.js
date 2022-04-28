@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 function AuthNavigator() {
     return (
-        <Stack.Navigator initialRouteName={'Signup'}
+        <Stack.Navigator initialRouteName={'Splash'}
             screenOptions={{
                 headerShown: false
             }}>
