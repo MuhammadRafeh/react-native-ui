@@ -6,8 +6,61 @@ import { wP, hP } from '../../functions/getDPFromPercent';
 import Planet from '../../assets/images/global/planet.svg';
 import Logo from '../../assets/images/global/Logo.svg';
 import SwipeCard from '../../components/main/Home/SwipeCard';
+import { PanGestureHandler } from 'react-native-gesture-handler';
+import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+
+
+const assets = [
+    {
+        name: 'Amy Cole',
+        age: 23,
+        chips: ['Shopping', 'Travel', 'Music'],
+        image: require('../../assets/images/home/boy.jpg')
+    },
+    {
+        name: 'Akif Pervaiz',
+        age: 22,
+        chips: ['Dancing', 'Music', 'sports'],
+        image: require('../../assets/images/home/boy2.jpg')
+    },
+    {
+        name: 'Umar Siddiqi',
+        age: 24,
+        chips: ['Swimming', 'Cricket', 'BasketBall'],
+        image: require('../../assets/images/home/boy3.jpg')
+    }
+]
+
+const CARD_HEIGHT = hP('72%');
 
 const HomeScreen = props => {
+
+    const translateY = useSharedValue(0);
+
+    const panHandler = useAnimatedGestureHandler({
+        onStart: (_, context) => {
+            context.startY = translateY.value;
+        },
+        onActive: (e, context) => {
+            translateY.value = context.startY + e.translationY
+        },
+        onFinish: (e) => {
+            if (e.velocityY < -10) {//going down
+                translateY.value -= CARD_HEIGHT
+            } else if (e.velocityY > 10) { //going up
+                translateY.value += CARD_HEIGHT
+            }
+        }
+    });
+
+    const animatedStyles = useAnimatedStyle(() => {
+        return {
+            transform: [
+                { translateY: translateY.value }
+            ]
+        }
+    })
+
     return (
         <>
             <LinearGradient colors={[theme.secondary, theme.secondary, theme.secondary, theme.primary]} style={linearGradient.style} />
@@ -32,8 +85,6 @@ const HomeScreen = props => {
             <Circle left={'87%'} top={'40%'} size={3} />
             <Circle left={'80%'} top={'58%'} size={5} />
 
-            <Circle left={'57%'} top={'16%'} size={14} />
-
             <Circle left={'95%'} top={'90%'} size={2} />
             <Circle left={'70%'} top={'80%'} size={2} />
             <Circle left={'45%'} top={'70%'} size={2} />
@@ -54,12 +105,21 @@ const HomeScreen = props => {
                     </View>
                 </View>
                 <View style={{ height: hP('80%') }}>
-                    <SwipeCard
-                        name={'Amy Cole'}
-                        age={23}
-                        chips={['Shopping', 'Travel', 'Music']}
-                        image={require('../../assets/images/home/boy.jpg')}
-                    />
+                    <PanGestureHandler onGestureEvent={panHandler}>
+                        <Animated.View style={[animatedStyles]}>
+                            {
+                                assets.map((item, key) => (
+                                    <SwipeCard
+                                        key={key}
+                                        name={item.name}
+                                        age={item.age}
+                                        chips={item.chips}
+                                        image={item.image}
+                                    />
+                                ))
+                            }
+                        </Animated.View>
+                    </PanGestureHandler>
                 </View>
             </View>
         </>

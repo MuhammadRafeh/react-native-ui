@@ -58,11 +58,12 @@ export default SwipeCard;
 const styles = StyleSheet.create({
     container: {
         width: wP('86%'),
-        height: '85%',
+        height: hP('67%'),
         alignSelf: 'center',
         borderRadius: 10,
         overflow: 'hidden',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        marginBottom: hP('5%')
     },
     lastRow: {
         flexDirection: 'row',
