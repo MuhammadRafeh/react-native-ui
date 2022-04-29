@@ -10,7 +10,7 @@ import Circle from '../../components/UI/Circle';
 
 const SplashScreen = props => {
     useEffect(() => {
-        setTimeout(() => props.navigation.replace('Signup'), 10);
+        setTimeout(() => props.navigation.replace('Signup'), 1);
     }, [])
     return (
         <>
