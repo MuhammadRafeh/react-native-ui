@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: 'hidden',
         justifyContent: 'flex-end',
-        marginBottom: hP('5%')
+        marginBottom: hP('13%')
     },
     lastRow: {
         flexDirection: 'row',

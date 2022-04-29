@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import theme, { linearGradient } from '../../constants/theme';
@@ -7,23 +7,26 @@ import Planet from '../../assets/images/global/planet.svg';
 import Logo from '../../assets/images/global/Logo.svg';
 import SwipeCard from '../../components/main/Home/SwipeCard';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedGestureHandler, useAnimatedRef, scrollTo, useSharedValue, useAnimatedScrollHandler, runOnJS } from 'react-native-reanimated';
 
 
 const assets = [
     {
+        id: 0,
         name: 'Amy Cole',
         age: 23,
         chips: ['Shopping', 'Travel', 'Music'],
         image: require('../../assets/images/home/boy.jpg')
     },
     {
+        id: 1,
         name: 'Akif Pervaiz',
         age: 22,
         chips: ['Dancing', 'Music', 'sports'],
         image: require('../../assets/images/home/boy2.jpg')
     },
     {
+        id: 2,
         name: 'Umar Siddiqi',
         age: 24,
         chips: ['Swimming', 'Cricket', 'BasketBall'],
@@ -31,33 +34,51 @@ const assets = [
     }
 ]
 
-const CARD_HEIGHT = hP('72%');
+const CARD_HEIGHT = hP('80%');
 
 const HomeScreen = props => {
+
+    const list = useAnimatedRef();
+    const [visibleIndex, setVisibleIndex] = useState(0);
 
     const translateY = useSharedValue(0);
 
     const panHandler = useAnimatedGestureHandler({
-        onStart: (_, context) => {
-            context.startY = translateY.value;
-        },
-        onActive: (e, context) => {
-            translateY.value = context.startY + e.translationY
+        onActive: (e) => {
+            scrollTo(list, 0, translateY.value + (-e.translationY), false)
         },
         onFinish: (e) => {
-            if (e.velocityY < -10) {//going down
-                translateY.value -= CARD_HEIGHT
-            } else if (e.velocityY > 10) { //going up
-                translateY.value += CARD_HEIGHT
+            const currentScroll = (translateY.value + (-e.translationY)) / CARD_HEIGHT;
+            const index = Math.round(currentScroll) //index also gives bad values
+            let nextItem = 0;
+            if (e.velocityY < -10 && (index < assets.length - 1 && index >= 0)) {//going down
+                if (Math.max(index, currentScroll) == currentScroll) {
+                    nextItem = ((index) * CARD_HEIGHT) + CARD_HEIGHT
+                } else {
+                    nextItem = ((index) * CARD_HEIGHT)
+                }
+            } else if (e.velocityY > 10 && (index <= assets.length - 1 && index > 0)) { //going up
+                if (Math.min(index, currentScroll) == currentScroll) {
+                    nextItem = ((index - 1) * CARD_HEIGHT)
+                } else {
+                    nextItem = (index * CARD_HEIGHT)
+                }
+            } else if (index <= assets.length - 1 && index >= 0) {
+                nextItem = ((index) * CARD_HEIGHT)
             }
+            scrollTo(list, 0, nextItem, true)
+            translateY.value = nextItem
         }
     });
 
-    const animatedStyles = useAnimatedStyle(() => {
-        return {
-            transform: [
-                { translateY: translateY.value }
-            ]
+    const scrollHandler = useAnimatedScrollHandler({
+        onScroll: (e) => {
+            const offsetY = e.contentOffset.y;
+            const index = Math.round(offsetY / CARD_HEIGHT)
+            console.log(index)
+            if (visibleIndex != index) {
+                runOnJS(setVisibleIndex)(index);
+            }
         }
     })
 
@@ -105,21 +126,29 @@ const HomeScreen = props => {
                     </View>
                 </View>
                 <View style={{ height: hP('80%') }}>
-                    <PanGestureHandler onGestureEvent={panHandler}>
-                        <Animated.View style={[animatedStyles]}>
-                            {
-                                assets.map((item, key) => (
-                                    <SwipeCard
-                                        key={key}
-                                        name={item.name}
-                                        age={item.age}
-                                        chips={item.chips}
-                                        image={item.image}
-                                    />
-                                ))
-                            }
-                        </Animated.View>
-                    </PanGestureHandler>
+                    <Animated.ScrollView
+                        decelerationRate={'fast'}
+                        scrollEventThrottle={16}
+                        scrollEnabled={false}
+                        ref={list}
+                        onScroll={scrollHandler}
+                        onLayout={e => console.log(e.nativeEvent.layout.height)}
+                    >
+                        {
+                            assets.map(item => (
+                                <PanGestureHandler onGestureEvent={panHandler} key={item.id}>
+                                    <Animated.View>
+                                        <SwipeCard
+                                            name={item.name}
+                                            age={item.age}
+                                            chips={item.chips}
+                                            image={item.image}
+                                        />
+                                    </Animated.View>
+                                </PanGestureHandler>
+                            ))
+                        }
+                    </Animated.ScrollView>
                 </View>
             </View>
         </>
