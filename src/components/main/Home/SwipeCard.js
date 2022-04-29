@@ -8,7 +8,7 @@ import Current from '../../../assets/images/home/current.svg';
 import Fvrt from '../../../assets/images/home/fvrt.svg';
 import Chip from '../../UI/Chip';
 
-const SwipeCard = ({ image, chips, name, age }) => {
+const SwipeCard = ({ image, chips, name, age, handleUpPress, handleDownPress }) => {
     return (
         <View style={styles.container}>
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
@@ -36,13 +36,13 @@ const SwipeCard = ({ image, chips, name, age }) => {
                 <TouchableOpacity style={[styles.iconContainer, { marginBottom: 15 }]}>
                     <Reload width={'47%'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconContainer}>
+                <TouchableOpacity style={styles.iconContainer} onPress={handleDownPress}>
                     <Down width={'62%'} />
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.iconContainer, { marginBottom: 15 }]}>
                     <Fvrt width={'50%'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconContainer}>
+                <TouchableOpacity style={styles.iconContainer} onPress={handleUpPress}>
                     <Up width={'62%'} />
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.iconContainer, { marginBottom: 15 }]}>

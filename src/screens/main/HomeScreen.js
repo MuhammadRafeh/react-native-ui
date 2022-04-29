@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import theme, { linearGradient } from '../../constants/theme';
 import { wP, hP } from '../../functions/getDPFromPercent';
@@ -7,26 +7,23 @@ import Planet from '../../assets/images/global/planet.svg';
 import Logo from '../../assets/images/global/Logo.svg';
 import SwipeCard from '../../components/main/Home/SwipeCard';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { useAnimatedGestureHandler, useAnimatedRef, scrollTo, useSharedValue, useAnimatedScrollHandler, runOnJS } from 'react-native-reanimated';
+import Animated, { useAnimatedGestureHandler, useAnimatedRef, scrollTo, useSharedValue, runOnUI } from 'react-native-reanimated';
 
 
 const assets = [
     {
-        id: 0,
         name: 'Amy Cole',
         age: 23,
         chips: ['Shopping', 'Travel', 'Music'],
         image: require('../../assets/images/home/boy.jpg')
     },
     {
-        id: 1,
         name: 'Akif Pervaiz',
         age: 22,
         chips: ['Dancing', 'Music', 'sports'],
         image: require('../../assets/images/home/boy2.jpg')
     },
     {
-        id: 2,
         name: 'Umar Siddiqi',
         age: 24,
         chips: ['Swimming', 'Cricket', 'BasketBall'],
@@ -39,7 +36,6 @@ const CARD_HEIGHT = hP('80%');
 const HomeScreen = props => {
 
     const list = useAnimatedRef();
-    const [visibleIndex, setVisibleIndex] = useState(0);
 
     const translateY = useSharedValue(0);
 
@@ -71,16 +67,33 @@ const HomeScreen = props => {
         }
     });
 
-    const scrollHandler = useAnimatedScrollHandler({
-        onScroll: (e) => {
-            const offsetY = e.contentOffset.y;
-            const index = Math.round(offsetY / CARD_HEIGHT)
-            console.log(index)
-            if (visibleIndex != index) {
-                runOnJS(setVisibleIndex)(index);
-            }
-        }
-    })
+    const handleUpPress = index => {
+        if ((index + 1) == assets.length) {
+            ToastAndroid.showWithGravity(
+                "Can't go Down Anymore!",
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM
+            );
+            return;
+        };
+        const nextItem = (index + 1) * CARD_HEIGHT;
+        runOnUI(scrollTo)(list, 0, nextItem, true)
+        translateY.value = nextItem;
+    }
+
+    const handleDownPress = index => {
+        if (index == 0) {
+            ToastAndroid.showWithGravity(
+                "Can't go Top Anymore!",
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM
+            );
+            return
+        };
+        const nextItem = (index - 1) * CARD_HEIGHT;
+        runOnUI(scrollTo)(list, 0, nextItem, true)
+        translateY.value = nextItem;
+    }
 
     return (
         <>
@@ -131,18 +144,19 @@ const HomeScreen = props => {
                         scrollEventThrottle={16}
                         scrollEnabled={false}
                         ref={list}
-                        onScroll={scrollHandler}
-                        onLayout={e => console.log(e.nativeEvent.layout.height)}
+                        showsVerticalScrollIndicator={false}
                     >
                         {
-                            assets.map(item => (
-                                <PanGestureHandler onGestureEvent={panHandler} key={item.id}>
+                            assets.map((item, index) => (
+                                <PanGestureHandler onGestureEvent={panHandler} key={index}>
                                     <Animated.View>
                                         <SwipeCard
                                             name={item.name}
                                             age={item.age}
                                             chips={item.chips}
                                             image={item.image}
+                                            handleUpPress={handleUpPress.bind(null, index)}
+                                            handleDownPress={handleDownPress.bind(null, index)}
                                         />
                                     </Animated.View>
                                 </PanGestureHandler>
