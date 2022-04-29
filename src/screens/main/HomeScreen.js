@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ToastAndroid } from 'react-native';
+import { View, StyleSheet, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import theme, { linearGradient } from '../../constants/theme';
 import { wP, hP } from '../../functions/getDPFromPercent';
