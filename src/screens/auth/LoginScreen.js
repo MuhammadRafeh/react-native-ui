@@ -38,7 +38,7 @@ const LoginScreen = props => {
 
     const handleSignin = () => {
         setWasSignUpPressed(true);
-        dispatch(authenticate(email, password, true))
+        dispatch(authenticate(email, password, true, 'login'))
         Keyboard.dismiss();
         if (!validateEmail(email)) {
             setIsEmailValid(false);

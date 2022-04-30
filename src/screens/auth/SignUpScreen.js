@@ -13,10 +13,14 @@ import getFontSize from '../../functions/getFontSize';
 import validateEmail from '../../functions/validateEmail';
 import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../../store/actions';
 
 const SignUpScreen = props => {
 
     const emailRef = useRef(null);
+
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -54,6 +58,7 @@ const SignUpScreen = props => {
             setIsEmailValid(false);
             emailRef.current?.bounceIn();
         } else {
+            dispatch(authenticate(email, password, true, 'signup'))
             setIsEmailValid(true);
         }
     }

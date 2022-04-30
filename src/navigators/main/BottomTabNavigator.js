@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../../screens/main/HomeScreen';
-import SubscriptionScreen from '../../screens/main/SubscriptionScreen';
-import MyProfileScreen from '../../screens/main/MyProfileScreen';
-import MyMatches from '../../screens/main/MyMatches';
+import HomeScreen from '../../screens/main/bottomtab/HomeScreen';
+import SubscriptionScreen from '../../screens/main/bottomtab/SubscriptionScreen';
+import MyProfileScreen from '../../screens/main/bottomtab/MyProfileScreen';
+import MyMatches from '../../screens/main/bottomtab/MyMatches';
 import TabBar from '../../components/main/bottomtab/TabBar';
 const Tab = createBottomTabNavigator();
 

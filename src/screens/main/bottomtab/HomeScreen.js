@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import theme, { linearGradient } from '../../constants/theme';
-import { wP, hP } from '../../functions/getDPFromPercent';
-import Planet from '../../assets/images/global/planet.svg';
-import Logo from '../../assets/images/global/Logo.svg';
-import SwipeCard from '../../components/main/Home/SwipeCard';
+import theme, { linearGradient } from '../../../constants/theme';
+import Planet from '../../../assets/images/global/planet.svg';
+import Logo from '../../../assets/images/global/Logo.svg';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, { useAnimatedGestureHandler, useAnimatedRef, scrollTo, useSharedValue, runOnUI } from 'react-native-reanimated';
+import SwipeCard from '../../../components/main/Home/SwipeCard';
+import { hP, wP } from '../../../functions/getDPFromPercent';
 
 
 const assets = [
@@ -15,19 +15,19 @@ const assets = [
         name: 'Amy Cole',
         age: 23,
         chips: ['Shopping', 'Travel', 'Music'],
-        image: require('../../assets/images/home/boy.jpg')
+        image: require('../../../assets/images/home/boy.jpg')
     },
     {
         name: 'Akif Pervaiz',
         age: 22,
         chips: ['Dancing', 'Music', 'sports'],
-        image: require('../../assets/images/home/boy2.jpg')
+        image: require('../../../assets/images/home/boy2.jpg')
     },
     {
         name: 'Umar Siddiqi',
         age: 24,
         chips: ['Swimming', 'Cricket', 'BasketBall'],
-        image: require('../../assets/images/home/boy3.jpg')
+        image: require('../../../assets/images/home/boy3.jpg')
     }
 ]
 

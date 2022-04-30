@@ -4,7 +4,8 @@ import { AUTHENTICATE, LOGOUT } from './actions';
 const initialAuthState = {
   email: '',
   password: '',
-  isLogin: false
+  isLogin: false,
+  comingFrom: null // login | signup
 };
 
 const authReducer = (state = initialAuthState, action) => {
@@ -13,7 +14,8 @@ const authReducer = (state = initialAuthState, action) => {
       return {
         email: action.payload.email,
         password: action.payload.password,
-        isLogin: action.payload.isLogin
+        isLogin: action.payload.isLogin,
+        comingFrom: action.payload.comingFrom
       };
     case LOGOUT:
       return initialAuthState;

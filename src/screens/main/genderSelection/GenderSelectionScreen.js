@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import theme, { linearGradient } from '../../constants/theme';
-import Circular from '../../assets/images/global/Circular.svg';
-import RunningFire from '../../assets/images/global/runningFire.svg';
-import { hP, wP } from '../../functions/getDPFromPercent';
-import SelectGender from '../../components/main/selectGender/SelectGender';
-import Button from '../../components/UI/Button';
-import Circle from '../../components/UI/Circle';
+import Circular from '../../../assets/images/global/Circular.svg';
+import RunningFire from '../../../assets/images/global/runningFire.svg';
+import { hP, wP } from '../../../functions/getDPFromPercent';
+import SelectGender from '../../../components/main/selectGender/SelectGender';
+import Button from '../../../components/UI/Button';
+import Circle from '../../../components/UI/Circle';
+import theme, { linearGradient } from '../../../constants/theme';
 
-const MyMatches = props => {
+const GenderSelectionScreen = props => {
     const [selected, setSelected] = useState(0);
     const onSelect = id => {
         setSelected(id);
@@ -38,8 +38,6 @@ const MyMatches = props => {
             <Circle left={'24%'} top={'50%'} size={3} />
             <Circle left={'87%'} top={'40%'} size={3} />
             <Circle left={'80%'} top={'58%'} size={5} />
-
-            <Circle left={'57%'} top={'16%'} size={14} />
 
             <Circle left={'95%'} top={'90%'} size={2} />
             <Circle left={'70%'} top={'80%'} size={2} />
@@ -76,17 +74,17 @@ const MyMatches = props => {
 
                 <View style={{ width: wP('78%'), alignSelf: 'center' }}>
                     <View style={styles.options}>
-                        <SelectGender onPress={onSelect.bind(null, 0)} isItSelected={0 == selected} pic={require('../../assets/images/genderselection/male.png')} title={'MALE'} />
-                        <SelectGender onPress={onSelect.bind(null, 1)} isItSelected={1 == selected} pic={require('../../assets/images/genderselection/female.png')} title={'FEMALE'} />
+                        <SelectGender onPress={onSelect.bind(null, 0)} isItSelected={0 == selected} pic={require('../../../assets/images/genderselection/male.png')} title={'MALE'} />
+                        <SelectGender onPress={onSelect.bind(null, 1)} isItSelected={1 == selected} pic={require('../../../assets/images/genderselection/female.png')} title={'FEMALE'} />
                     </View>
                     <View style={styles.options}>
-                        <SelectGender onPress={onSelect.bind(null, 2)} isItSelected={2 == selected} pic={require('../../assets/images/genderselection/transmale.png')} title={'TRANSMALE'} />
-                        <SelectGender onPress={onSelect.bind(null, 3)} isItSelected={3 == selected} pic={require('../../assets/images/genderselection/transfemale.png')} title={'TRANSFEMALE'} />
+                        <SelectGender onPress={onSelect.bind(null, 2)} isItSelected={2 == selected} pic={require('../../../assets/images/genderselection/transmale.png')} title={'TRANSMALE'} />
+                        <SelectGender onPress={onSelect.bind(null, 3)} isItSelected={3 == selected} pic={require('../../../assets/images/genderselection/transfemale.png')} title={'TRANSFEMALE'} />
                     </View>
                 </View>
 
                 <View style={styles.contentContainer}>
-                    <Button title={'NEXT'} onPress={() => { }} style={{ borderRadius: hP('5%') / 2 }} />
+                    <Button title={'NEXT'} onPress={() => { props.navigation.replace('BottomTab') }} style={{ borderRadius: hP('5%') / 2 }} />
                 </View>
 
             </View>
@@ -94,7 +92,7 @@ const MyMatches = props => {
     );
 }
 
-export default MyMatches;
+export default GenderSelectionScreen;
 
 const styles = StyleSheet.create({
     screen: {
