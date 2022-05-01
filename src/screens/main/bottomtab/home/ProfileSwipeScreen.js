@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, StyleSheet, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import theme, { linearGradient } from '../../../constants/theme';
-import Planet from '../../../assets/images/global/planet.svg';
-import Logo from '../../../assets/images/global/Logo.svg';
+
+import Planet from '../../../../assets/images/global/planet.svg';
+import Logo from '../../../../assets/images/global/Logo.svg';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, { useAnimatedGestureHandler, useAnimatedRef, scrollTo, useSharedValue, runOnUI } from 'react-native-reanimated';
-import SwipeCard from '../../../components/main/Home/SwipeCard';
-import { hP, wP } from '../../../functions/getDPFromPercent';
+import SwipeCard from '../../../../components/main/Home/SwipeCard'
+import { hP, wP } from '../../../../functions/getDPFromPercent';
+import theme, { linearGradient } from '../../../../constants/theme';
 
 
 const assets = [
@@ -15,31 +16,41 @@ const assets = [
         name: 'Amy Cole',
         age: 23,
         chips: ['Shopping', 'Travel', 'Music'],
-        image: require('../../../assets/images/home/boy.jpg')
+        image: require('../../../../assets/images/home/boy.jpg')
     },
     {
         name: 'Akif Pervaiz',
         age: 22,
         chips: ['Dancing', 'Music', 'sports'],
-        image: require('../../../assets/images/home/boy2.jpg')
+        image: require('../../../../assets/images/home/boy2.jpg')
     },
     {
         name: 'Umar Siddiqi',
         age: 24,
         chips: ['Swimming', 'Cricket', 'BasketBall'],
-        image: require('../../../assets/images/home/boy3.jpg')
+        image: require('../../../../assets/images/home/boy3.jpg')
+    },
+    {
+        name: 'Ashfaq Ahmad',
+        age: 30,
+        chips: ['Cricket', 'BasketBall', 'XBOX 360'],
+        image: require('../../../../assets/images/home/boy4.jpg')
     }
 ]
 
 const CARD_HEIGHT = hP('80%');
 
-const HomeScreen = props => {
+const ProfileSwipeScreen = props => {
 
     const list = useAnimatedRef();
 
     const translateY = useSharedValue(0);
+    const isGestureActive = useSharedValue(false);
 
     const panHandler = useAnimatedGestureHandler({
+        onStart: (_) => {
+            isGestureActive.value = true;
+        },
         onActive: (e) => {
             scrollTo(list, 0, translateY.value + (-e.translationY), false)
         },
@@ -64,6 +75,7 @@ const HomeScreen = props => {
             }
             scrollTo(list, 0, nextItem, true)
             translateY.value = nextItem
+            isGestureActive.value = false;
         }
     });
 
@@ -93,6 +105,11 @@ const HomeScreen = props => {
         const nextItem = (index - 1) * CARD_HEIGHT;
         runOnUI(scrollTo)(list, 0, nextItem, true)
         translateY.value = nextItem;
+    }
+
+    const handleFvrtPress = index => {
+        const profile = assets[index];
+        props.navigation.navigate('Matched', { name: profile.name, pic: profile.image })
     }
 
     return (
@@ -157,6 +174,7 @@ const HomeScreen = props => {
                                             image={item.image}
                                             handleUpPress={handleUpPress.bind(null, index)}
                                             handleDownPress={handleDownPress.bind(null, index)}
+                                            handleFvrtPress={handleFvrtPress.bind(null, index)}
                                         />
                                     </Animated.View>
                                 </PanGestureHandler>
@@ -169,7 +187,7 @@ const HomeScreen = props => {
     );
 }
 
-export default HomeScreen;
+export default ProfileSwipeScreen;
 
 const styles = StyleSheet.create({
     screen: {

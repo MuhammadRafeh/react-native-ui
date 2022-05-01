@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Comet from '../../assets/images/splash/Comet.svg';
 import Logo from '../../assets/images/global/Logo.svg';
-import Moon from '../../assets/images/splash/Moon.svg';
+import Moon from '../../assets/images/global/Moon.svg';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import LinearGradient from 'react-native-linear-gradient';
 import { linearGradient } from '../../constants/theme';

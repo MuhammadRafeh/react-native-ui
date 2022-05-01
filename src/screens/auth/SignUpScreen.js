@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput as TX, Keyboard } from 'react-native';
 import BigSun from '../../assets/images/signup/bigSun.svg';
-import RunSun from '../../assets/images/signup/runSun.svg';
-import Sun from '../../assets/images/signup/sun.svg';
+import RunSun from '../../assets/images/global/runSun.svg';
+import Sun from '../../assets/images/global/sun.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import theme, { linearGradient } from '../../constants/theme';
 import TextInput from '../../components/UI/TextInput';
@@ -215,12 +215,12 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
     sun: {
-        right: '-5.7%',
-        bottom: hP('14%'),
+        right: '-7%',
+        bottom: hP('11.4%'),
         position: 'absolute'
     },
     runSun: {
-        top: hP('13.5%'),
+        top: hP('11.8%'),
         right: '-2%',
         position: 'absolute'
     },
