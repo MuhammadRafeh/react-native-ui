@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Keyboard } from 'react-native
 import LinearGradient from 'react-native-linear-gradient';
 import theme, { linearGradient } from '../../constants/theme';
 import Circular from '../../assets/images/global/Circular.svg';
-import Planet from '../../assets/images/login/Planet.svg';
+import Planet from '../../assets/images/global/Planet.svg';
 import Rainbow from '../../assets/images/login/Rainbow.svg';
 import { hP, wP } from '../../functions/getDPFromPercent';
 import * as Animatable from 'react-native-animatable';
